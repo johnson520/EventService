@@ -1,0 +1,83 @@
+body {
+  background-color: white;
+}
+.formWrapper {
+  padding: 10px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-color: #eee;
+  box-shadow: #333 0 0 15px;
+  box-shadow: #777 0px 0 15px;
+  box-shadow: #888 0px 0 20px;
+  /* box-shadow: #999 0px 0 15px; */
+}
+.formWrapper #addressLinks a {
+  display: block;
+  font-size: 10pt;
+}
+.formWrapper #templateNav {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+}
+.formWrapper #templateNav label {
+  display: inline-block;
+  margin-right: 10px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #777;
+  color: #888;
+  color: #999;
+}
+.formWrapper #templateNav #eventTemplate {
+  display: inline-block;
+  width: 70%;
+}
+.formWrapper .templateDivider {
+  margin: 10px 15px 5px;
+  height: 1px;
+  background-color: #ccc;
+}
+.formWrapper .fieldLabel {
+  display: block;
+  font-weight: 500;
+  color: #777;
+  color: #888;
+  color: #999;
+  text-transform: uppercase;
+}
+.formWrapper .fieldLabel.hiddenLabel {
+  visibility: hidden;
+}
+.formWrapper .fieldLabel.durationLabel {
+  padding-left: 15px;
+}
+.formWrapper .brokenDiv {
+  display: inline-block;
+}
+.formWrapper .form-check.checkBoxWrapper.customFieldCheckBox {
+  padding-left: 0;
+}
+.formWrapper .form-check.checkBoxWrapper .form-check-input {
+  height: 38px;
+  width: 38px;
+  margin: 0;
+}
+.formWrapper .form-check.checkBoxWrapper .form-check-label {
+  margin-left: 45px;
+  margin-top: 6px;
+  font-weight: 400;
+  color: #999;
+  text-transform: uppercase;
+}
+.formWrapper input.isEmpty.isDirty,
+.formWrapper input.isInvalid {
+  box-shadow: red 0 0 10px;
+  border: 1px solid red;
+}
+.formWrapper .buttonRow {
+  margin: 10px;
+}
