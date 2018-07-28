@@ -49,5 +49,12 @@ namespace EventService.Controllers
         {
             return EventsTable.Update(em);
         }
+        
+        [Route("api/event/{id}")]
+        [HttpDelete]
+        public bool DeleteEvent(long id)
+        {
+            return EventsTable.Delete(id);
+        }
     }
 }

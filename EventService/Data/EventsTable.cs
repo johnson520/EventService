@@ -27,14 +27,14 @@ namespace EventService.Data
         {
             em.eventId = NextEventId();
 
-            var tableResult =  table.Execute(TableOperation.Insert(new EventsTableEntity(em)));
+            var tableResult = table.Execute(TableOperation.Insert(new EventsTableEntity(em)));
             var ete = (EventsTableEntity)tableResult.Result;
             return ete?.theEvent;
         }
 
         public static EventModel Update(EventModel em)
         {
-            var tableResult = table.Execute(TableOperation.Retrieve(PartitionKey, RowKey(em)));
+            var tableResult = table.Execute(TableOperation.Retrieve<EventsTableEntity>(PartitionKey, RowKey(em)));
             var ete = (EventsTableEntity)tableResult.Result;
 
             if (ete == null)
@@ -61,8 +61,7 @@ namespace EventService.Data
 
         public static List<EventModel> GetAll()
         {
-            return table.CreateQuery<EventsTableEntity>().Where(te => te.PartitionKey == PartitionKey).ToList()
-                .Select(te => te.theEvent).ToList();
+            return table.CreateQuery<EventsTableEntity>().Where(te => te.PartitionKey == PartitionKey).ToList().Select(te => te.theEvent).ToList();
         }
 
         private static string RowKey(EventModel em)
@@ -73,6 +72,18 @@ namespace EventService.Data
         private static string RowKey(long id)
         {
             return id.ToString("D5");
+        }
+
+        public static bool Delete(long id)
+        {
+            var tableResult = table.Execute(TableOperation.Retrieve<EventsTableEntity>(PartitionKey, RowKey(id)));
+            var ete = (EventsTableEntity)tableResult.Result;
+
+            if (ete == null)
+                return false;
+
+            tableResult = table.Execute(TableOperation.Delete(ete));
+            return tableResult.Result != null;
         }
 
         private class EventsTableEntity : TableEntity
