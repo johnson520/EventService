@@ -27,7 +27,7 @@ namespace EventService.Controllers
         {
             return EventsTable.Create(new EventModel
             {
-                eventDescription = $"Event created at {DateTime.Now.ToString()}",
+                eventTitle = $"Event created at {DateTime.Now.ToString()}",
                 eventStartDate = $"{DateTime.Now:yyyy-MM-dd}",
                 eventStartTime = $"{DateTime.Now:HH:mm}"
             });
