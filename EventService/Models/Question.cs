@@ -31,7 +31,7 @@ namespace EventService.Models
         {
             this.label = label;
 
-            var k = Regex.Replace(label, "[^a-z]+", string.Empty);
+            var k = Regex.Replace(label, "[^a-zA-Z]+", string.Empty);
             key = k.Substring(0, 1).ToLowerInvariant() + k.Substring(1);
         }
 
@@ -51,7 +51,7 @@ namespace EventService.Models
 
         public Option(string keyValue)
         {
-            key = Regex.Replace(keyValue.ToLowerInvariant(), "[^a-z]+", string.Empty);
+            key = Regex.Replace(keyValue.ToLowerInvariant(), "[^a-zA-Z]+", string.Empty);
             value = keyValue;
         }
     }

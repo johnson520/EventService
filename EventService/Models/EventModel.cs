@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+// ReSharper disable NotAccessedField.Global
 
 // ReSharper disable UnusedMember.Global
 
@@ -8,6 +9,8 @@ namespace EventService.Models
 {
     public class EventModel
     {
+        public long eventId;
+
         public bool eventAllDay;
         public string eventDescription;
         public int eventDurationDays;
