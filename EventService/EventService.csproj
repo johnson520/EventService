@@ -93,13 +93,19 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dist\12f0820c451bdc75f4d1ef97732bf6e8.woff" />
     <Content Include="dist\33a752211d05af6684e26ec63c2ed965.gif" />
     <Content Include="dist\792dcd18baf5f544aabcad1883d673c2.svg" />
     <Content Include="dist\a770b6797b68e3f8920e473eb824bac0.gif" />
     <Content Include="dist\b36735f5507b70a2e716ef9cac7e6280.svg" />
+    <Content Include="dist\bc7c4a59f924cf037aad6e1f9edba366.eot" />
     <Content Include="dist\bundle.js" />
-    <Content Include="dist\fonts\rw-widgets.svg" />
+    <Content Include="dist\bundle.js.map" />
+    <Content Include="dist\eceddf474df95d8d4a7e316668c3be85.ttf" />
+    <Content Include="dist\rw-widgets.eot" />
     <Content Include="dist\rw-widgets.svg" />
+    <Content Include="dist\rw-widgets.ttf" />
+    <Content Include="dist\rw-widgets.woff" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="Web.config" />
@@ -119,20 +125,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dist\12f0820c451bdc75f4d1ef97732bf6e8.woff" />
-    <Content Include="dist\bc7c4a59f924cf037aad6e1f9edba366.eot" />
-    <Content Include="dist\bundle.js.map" />
-    <Content Include="dist\eceddf474df95d8d4a7e316668c3be85.ttf" />
-    <Content Include="dist\fonts\rw-widgets.eot" />
-    <Content Include="dist\fonts\rw-widgets.ttf" />
-    <Content Include="dist\fonts\rw-widgets.woff" />
-    <Content Include="dist\rw-widgets.eot" />
-    <Content Include="dist\rw-widgets.ttf" />
-    <Content Include="dist\rw-widgets.woff" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\TrumbaAddEvent - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TrumbaEventService - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TrumbaEventService - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\TrumbaEventService - Web Deploy2.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -142,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="dist\fonts\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
@@ -180,8 +178,8 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props'))" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>xcopy $(ProjectDir)..\..\ReactTrumba\dist\*.* $(ProjectDir)dist /y
-</PreBuildEvent>
+    <PreBuildEvent>xcopy $(ProjectDir)..\..\ReactTrumba\dist\*.* $(ProjectDir)dist /y /s
+xcopy $(ProjectDir)..\..\ReactTrumba\index.html $(ProjectDir) /y</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
