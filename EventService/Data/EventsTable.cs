@@ -11,10 +11,10 @@ namespace EventService.Data
     {
         private const string PartitionKey = "event";
 
-        private static readonly CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+        private static readonly CloudStorageAccount azureStorage = CloudStorageAccount.Parse(
             "DefaultEndpointsProtocol=https;AccountName=tedjtest;AccountKey=uSmu+mU9njs8nS2K0ddZRdskGkCFFh04pmay/uQmiMs9oRIUBt24d6kFpIqDcCX8Qgd+5TI/isfj5SF235DWbw==;EndpointSuffix=core.windows.net");
 
-        private static readonly CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+        private static readonly CloudTableClient tableClient = azureStorage.CreateCloudTableClient();
 
         private static readonly CloudTable table = tableClient.GetTableReference("events");
 

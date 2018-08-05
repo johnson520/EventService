@@ -13,7 +13,7 @@ namespace EventService.Models
 
         public string key;
         public string label;
-        public Option[] options;
+        public QOption[] options;
         public bool required;
         public object value;
 
@@ -37,7 +37,7 @@ namespace EventService.Models
 
     }
 
-    public class Option
+    public class QOption
     {
         public string key;
         public string value;
@@ -45,11 +45,11 @@ namespace EventService.Models
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string url;
 
-        public Option()
+        public QOption()
         {
         }
 
-        public Option(string keyValue)
+        public QOption(string keyValue)
         {
             key = Regex.Replace(keyValue.ToLowerInvariant(), "[^a-zA-Z]+", string.Empty);
             value = keyValue;

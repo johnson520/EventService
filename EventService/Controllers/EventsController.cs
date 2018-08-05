@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Web.Http;
 using EventService.Data;
@@ -41,6 +42,16 @@ namespace EventService.Controllers
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
             return EventsTable.Create(em);
+        }
+
+        [Route("api/image")]
+        [HttpPost]
+        public string AddCustomImage([FromBody] QOption cid)
+        {
+            if (cid == null || string.IsNullOrEmpty(cid.key) || string.IsNullOrEmpty(cid.value) || string.IsNullOrEmpty(cid.url))
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+
+            return ImagesBlob.SaveCustomImage(cid);
         }
 
         [Route("api/event/{id}")]

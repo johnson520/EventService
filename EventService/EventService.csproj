@@ -115,6 +115,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\EventTemplatesController.cs" />
     <Compile Include="Data\EventsTable.cs" />
+    <Compile Include="Data\ImagesBlob.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

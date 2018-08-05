@@ -1,26 +1,29 @@
 ﻿using System.Linq;
+using EventService.Data;
 
 namespace EventService.Models
 {
     public static class SampleTemplates
     {
+        private static readonly QOption[] DefaultEventImages =
+        {
+            new QOption("None"),
+            new QOption { url = "https://www.trumba.com/images/trumba_logo_sm.gif", key = "trumba-logo", value = "Trumba" },
+            new QOption { url = "http://wmgf.us/wp-content/uploads/2016/02/Washington_Huskies.png", key = "uw-huskies-logo", value = "Huskies" },
+            new QOption
+            {
+                url = "https://static.nfl.com/static/content/public/static/wildcat/assets/img/logos/teams/SEA.svg",
+                key = "nfl-seahawks",
+                value = "Seahawks"
+            }
+        };
+
         public static readonly Question[] DefaultTemplateQuestions =
         {
             new Question("Event Image")
             {
                 controlType = ControlType.imagepicker,
-                options = new[]
-                {
-                    new Option("None"),
-                    new Option { url = "https://www.trumba.com/images/trumba_logo_sm.gif", key = "trumba-logo", value = "Trumba" },
-                    new Option { url = "http://wmgf.us/wp-content/uploads/2016/02/Washington_Huskies.png", key = "uw-huskies-logo", value = "Huskies" },
-                    new Option
-                    {
-                        url = "https://static.nfl.com/static/content/public/static/wildcat/assets/img/logos/teams/SEA.svg",
-                        key = "nfl-seahawks",
-                        value = "Seahawks"
-                    }
-                },
+                options = DefaultEventImages.Concat(ImagesBlob.GetCustomImages()).ToArray(),
                 value = "none"
             },
             new Question("Audience")
@@ -28,7 +31,7 @@ namespace EventService.Models
                 key = "eventAudience",
                 required = true,
                 controlType = ControlType.multiselect,
-                options = new[] { new Option("Adults"), new Option("Children"), new Option("Seniors"), new Option("Teens") },
+                options = new[] { new QOption("Adults"), new QOption("Children"), new QOption("Seniors"), new QOption("Teens") },
                 value = new string[0]
             },
             new Question("Event Type")
@@ -37,16 +40,16 @@ namespace EventService.Models
                 required = true,
                 options = new[]
                 {
-                    new Option("Class"),
-                    new Option("Exhibit"),
-                    new Option("Festival"),
-                    new Option("Job Fair"),
-                    new Option("Meeting"),
-                    new Option("Performance"),
-                    new Option("Seminar"),
-                    new Option("Tour"),
-                    new Option("Trade Show"),
-                    new Option("Webinar")
+                    new QOption("Class"),
+                    new QOption("Exhibit"),
+                    new QOption("Festival"),
+                    new QOption("Job Fair"),
+                    new QOption("Meeting"),
+                    new QOption("Performance"),
+                    new QOption("Seminar"),
+                    new QOption("Tour"),
+                    new QOption("Trade Show"),
+                    new QOption("Webinar")
                 },
                 value = new string[0]
             }
