@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using EventService.Models;
 using Microsoft.WindowsAzure.Storage;
@@ -11,8 +12,8 @@ namespace EventService.Data
     {
         private const string PartitionKey = "event";
 
-        private static readonly CloudStorageAccount azureStorage = CloudStorageAccount.Parse(
-            "DefaultEndpointsProtocol=https;AccountName=tedjtest;AccountKey=uSmu+mU9njs8nS2K0ddZRdskGkCFFh04pmay/uQmiMs9oRIUBt24d6kFpIqDcCX8Qgd+5TI/isfj5SF235DWbw==;EndpointSuffix=core.windows.net");
+        private static readonly CloudStorageAccount azureStorage = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AzureStorage"].ConnectionString
+            );
 
         private static readonly CloudTableClient tableClient = azureStorage.CreateCloudTableClient();
 

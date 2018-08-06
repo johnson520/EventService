@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -13,8 +14,7 @@ namespace EventService.Data
     {
         private const string BlobContainerName = "customimages";
 
-        private static readonly CloudStorageAccount azureStorage = CloudStorageAccount.Parse(
-            "DefaultEndpointsProtocol=https;AccountName=tedjtest;AccountKey=uSmu+mU9njs8nS2K0ddZRdskGkCFFh04pmay/uQmiMs9oRIUBt24d6kFpIqDcCX8Qgd+5TI/isfj5SF235DWbw==;EndpointSuffix=core.windows.net");
+        private static readonly CloudStorageAccount azureStorage = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AzureStorage"].ConnectionString);
 
         private static readonly Regex rxDataUri = new Regex(@"^data:(?<mime>image/(?<ext>[a-z]+));base64,", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
