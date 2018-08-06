@@ -40,7 +40,7 @@ namespace EventService.Data
             return blob.Uri.AbsoluteUri;
         }
 
-        public static IEnumerable<QOption> GetCustomImages()
+        public static List<QOption> GetCustomImages()
         {
             var container = GetBlobContainer();
             return container.ListBlobs().Select(item => GetQOption(container, item.Uri.AbsoluteUri)).ToList();

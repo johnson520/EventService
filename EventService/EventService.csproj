@@ -108,7 +108,9 @@
     <Content Include="dist\rw-widgets.woff" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -126,17 +128,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="connectionStrings.config" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\TrumbaAddEvent - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TrumbaEventService - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TrumbaEventService - Web Deploy1.pubxml" />
     <None Include="Properties\PublishProfiles\TrumbaEventService - Web Deploy2.pubxml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

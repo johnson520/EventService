@@ -23,7 +23,7 @@ namespace EventService.Models
             new Question("Event Image")
             {
                 controlType = ControlType.imagepicker,
-                options = DefaultEventImages.Concat(ImagesBlob.GetCustomImages()).ToArray(),
+                options = DefaultEventImages,
                 value = "none"
             },
             new Question("Audience")
