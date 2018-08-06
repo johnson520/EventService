@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using EventService.Data;
 
 namespace EventService.Models
 {
@@ -20,12 +19,7 @@ namespace EventService.Models
 
         public static readonly Question[] DefaultTemplateQuestions =
         {
-            new Question("Event Image")
-            {
-                controlType = ControlType.imagepicker,
-                options = DefaultEventImages,
-                value = "none"
-            },
+            new Question("Event Image") { controlType = ControlType.imagepicker, options = DefaultEventImages, value = "none" },
             new Question("Audience")
             {
                 key = "eventAudience",
