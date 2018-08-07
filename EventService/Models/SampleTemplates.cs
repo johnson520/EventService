@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using EventService.Data;
 
 namespace EventService.Models
 {
@@ -14,38 +15,6 @@ namespace EventService.Models
                 url = "https://static.nfl.com/static/content/public/static/wildcat/assets/img/logos/teams/SEA.svg",
                 key = "nfl-seahawks",
                 value = "Seahawks"
-            }
-        };
-
-        public static readonly Question[] DefaultTemplateQuestions =
-        {
-            new Question("Event Image") { controlType = ControlType.imagepicker, options = DefaultEventImages, value = "none" },
-            new Question("Audience")
-            {
-                key = "eventAudience",
-                required = true,
-                controlType = ControlType.multiselect,
-                options = new[] { new QOption("Adults"), new QOption("Children"), new QOption("Seniors"), new QOption("Teens") },
-                value = new string[0]
-            },
-            new Question("Event Type")
-            {
-                controlType = ControlType.multiselect,
-                required = true,
-                options = new[]
-                {
-                    new QOption("Class"),
-                    new QOption("Exhibit"),
-                    new QOption("Festival"),
-                    new QOption("Job Fair"),
-                    new QOption("Meeting"),
-                    new QOption("Performance"),
-                    new QOption("Seminar"),
-                    new QOption("Tour"),
-                    new QOption("Trade Show"),
-                    new QOption("Webinar")
-                },
-                value = new string[0]
             }
         };
 
@@ -94,6 +63,44 @@ namespace EventService.Models
             }
         };
 
-        public static readonly Question[] SampleTemplateQuestions = DefaultTemplateQuestions.Concat(SampleExtra).ToArray();
+        public static Question[] SampleTemplateQuestions => DefaultTemplateQuestions.Concat(SampleExtra).ToArray();
+
+        public static Question[] DefaultTemplateQuestions =>
+            new[]
+            {
+                new Question("Event Image")
+                {
+                    controlType = ControlType.imagepicker,
+                    options = DefaultEventImages.Concat(ImagesBlob.GetCustomImages()).ToArray(),
+                    value = "none"
+                },
+                new Question("Audience")
+                {
+                    key = "eventAudience",
+                    required = true,
+                    controlType = ControlType.multiselect,
+                    options = new[] { new QOption("Adults"), new QOption("Children"), new QOption("Seniors"), new QOption("Teens") },
+                    value = new string[0]
+                },
+                new Question("Event Type")
+                {
+                    controlType = ControlType.multiselect,
+                    required = true,
+                    options = new[]
+                    {
+                        new QOption("Class"),
+                        new QOption("Exhibit"),
+                        new QOption("Festival"),
+                        new QOption("Job Fair"),
+                        new QOption("Meeting"),
+                        new QOption("Performance"),
+                        new QOption("Seminar"),
+                        new QOption("Tour"),
+                        new QOption("Trade Show"),
+                        new QOption("Webinar")
+                    },
+                    value = new string[0]
+                }
+            };
     }
 }
