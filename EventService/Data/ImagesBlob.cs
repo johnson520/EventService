@@ -43,7 +43,22 @@ namespace EventService.Data
         public static List<QOption> GetCustomImages()
         {
             var container = GetBlobContainer();
-            return container.ListBlobs().Select(item => GetQOption(container, item.Uri.AbsoluteUri)).ToList();
+            return container.ListBlobs().Select(item => GetQOption(container, item.Uri.AbsoluteUri)).OrderBy(o => o.sortKey).ToList();
+        }
+
+        public static bool DeleteCustomImage(string filename)
+        {
+            var container = GetBlobContainer();
+            var blob = container.GetBlobReference(filename);
+            try
+            {
+                blob.Delete();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private static QOption GetQOption(CloudBlobContainer container, string url)
@@ -53,12 +68,14 @@ namespace EventService.Data
 
             var key = Path.GetFileNameWithoutExtension(url);
             var name = blob.Metadata.ContainsKey("name") ? blob.Metadata["name"] : key;
+            var sortKey = blob.Properties.LastModified?.ToString("s");
 
             return new QOption
             {
                 key = key,
                 value = name,
-                url = url
+                url = url,
+                sortKey = sortKey
             };
         }
 

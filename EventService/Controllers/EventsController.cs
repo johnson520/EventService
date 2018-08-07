@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Web.Http;
 using EventService.Data;
@@ -54,13 +53,27 @@ namespace EventService.Controllers
             return ImagesBlob.SaveCustomImage(cid);
         }
 
+        [Route("api/images")]
+        [HttpGet]
+        public List<QOption> GetCustomImages()
+        {
+            return ImagesBlob.GetCustomImages();
+        }
+
+        [Route("api/image/{filename}/{ext}")]
+        [HttpDelete]
+        public bool DeleteCustomImage(string filename, string ext)
+        {
+            return ImagesBlob.DeleteCustomImage($"{filename}.{ext}");
+        }
+
         [Route("api/event/{id}")]
         [HttpPut]
         public EventModel UpdateEvent(long id, [FromBody] EventModel em)
         {
             return EventsTable.Update(em);
         }
-        
+
         [Route("api/event/{id}")]
         [HttpDelete]
         public bool DeleteEvent(long id)

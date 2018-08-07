@@ -45,6 +45,9 @@ namespace EventService.Models
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string url;
 
+        [JsonIgnore]
+        public string sortKey;
+
         public QOption()
         {
         }
