@@ -26,6 +26,8 @@ namespace EventService.Models
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string eventRepeatMonthlyOn;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string eventRepeatAnnuallyOn;
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string eventRepeatDailyEvery;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string eventRepeatWeeklyEvery;
