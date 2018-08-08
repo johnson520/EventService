@@ -22,6 +22,20 @@ namespace EventService.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public EventRepeat eventRepeat;
 
+        //  move into structure for repeat
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string eventRepeatMonthlyOn;
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string eventRepeatDailyEvery;
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string eventRepeatWeeklyEvery;
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string eventRepeatMonthlyEvery;
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string[] eventRepeatWeeklyDays;
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string eventRepeatThru;
+
         public string eventStartDate;
         public string eventStartTime;
         public string eventTemplate;
