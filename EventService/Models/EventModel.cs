@@ -45,6 +45,9 @@ namespace EventService.Models
         public string eventWebLink;
 
         public Dictionary<string, object> customFields;
+
+        public string owningCalendar;
+        public string[] alsoShowsOn;
     }
 
     public enum EventRepeat
