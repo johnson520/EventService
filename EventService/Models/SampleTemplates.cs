@@ -24,41 +24,41 @@ namespace EventService.Models
         {
             new Question
             {
-                value = null,
+                defaultValue = null,
                 key = "eventFeaturedEvent",
-                label = "Featured event",
+                displayName = "Featured event",
                 required = false,
                 order = 110,
-                controlType = ControlType.checkbox
+                fieldType = FieldType.checkbox
             },
             new Question
             {
-                value = "",
+                defaultValue = "",
                 key = "eventSubmitterPhone",
-                label = "Submitter phone",
+                displayName = "Submitter phone",
                 required = false,
                 order = 111,
-                controlType = ControlType.textbox,
+                fieldType = FieldType.textbox,
                 type = "tel"
             },
             new Question
             {
-                value = "",
+                defaultValue = "",
                 key = "eventSubmitterEmail",
-                label = "Submitter email",
+                displayName = "Submitter email",
                 required = true,
                 order = 112,
-                controlType = ControlType.textbox,
+                fieldType = FieldType.textbox,
                 type = "email"
             },
             new Question
             {
-                value = "",
+                defaultValue = "",
                 key = "eventSubmitterName",
-                label = "Submitter name",
+                displayName = "Submitter name",
                 required = true,
                 order = 113,
-                controlType = ControlType.textbox,
+                fieldType = FieldType.textbox,
                 type = "text"
             }
         };
@@ -70,23 +70,23 @@ namespace EventService.Models
             {
                 new Question("Event Image")
                 {
-                    controlType = ControlType.imagepicker,
-                    options = DefaultEventImages.Concat(ImagesBlob.GetCustomImages()).ToArray(),
-                    value = "none"
+                    fieldType = FieldType.imagepicker,
+                    allowedValues = DefaultEventImages.Concat(ImagesBlob.GetCustomImages()).ToArray(),
+                    defaultValue = "none"
                 },
                 new Question("Audience")
                 {
                     key = "eventAudience",
                     required = true,
-                    controlType = ControlType.multiselect,
-                    options = new[] { new QOption("Adults"), new QOption("Children"), new QOption("Seniors"), new QOption("Teens") },
-                    value = new string[0]
+                    fieldType = FieldType.multiselect,
+                    allowedValues = new[] { new QOption("Adults"), new QOption("Children"), new QOption("Seniors"), new QOption("Teens") },
+                    defaultValue = new string[0]
                 },
                 new Question("Event Type")
                 {
-                    controlType = ControlType.multiselect,
+                    fieldType = FieldType.multiselect,
                     required = true,
-                    options = new[]
+                    allowedValues = new[]
                     {
                         new QOption("Class"),
                         new QOption("Exhibit"),
@@ -99,7 +99,7 @@ namespace EventService.Models
                         new QOption("Trade Show"),
                         new QOption("Webinar")
                     },
-                    value = new string[0]
+                    defaultValue = new string[0]
                 }
             };
     }
