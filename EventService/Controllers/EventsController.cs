@@ -45,7 +45,7 @@ namespace EventService.Controllers
 
         [Route("api/image")]
         [HttpPost]
-        public string AddCustomImage([FromBody] QOption cid)
+        public string AddCustomImage([FromBody] AllowedValue cid)
         {
             if (cid == null || string.IsNullOrEmpty(cid.key) || string.IsNullOrEmpty(cid.value) || string.IsNullOrEmpty(cid.url))
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -55,7 +55,7 @@ namespace EventService.Controllers
 
         [Route("api/images")]
         [HttpGet]
-        public List<QOption> GetCustomImages()
+        public List<AllowedValue> GetCustomImages()
         {
             return ImagesBlob.GetCustomImages();
         }

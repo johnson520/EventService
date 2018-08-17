@@ -18,7 +18,7 @@ namespace EventService.Data
 
         private static readonly Regex rxDataUri = new Regex(@"^data:(?<mime>image/(?<ext>[a-z]+));base64,", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-        public static string SaveCustomImage(QOption cid)
+        public static string SaveCustomImage(AllowedValue cid)
         {
             var dataUri = cid.url;
             var match = rxDataUri.Match(dataUri);
@@ -40,7 +40,7 @@ namespace EventService.Data
             return blob.Uri.AbsoluteUri;
         }
 
-        public static List<QOption> GetCustomImages()
+        public static List<AllowedValue> GetCustomImages()
         {
             var container = GetBlobContainer();
             return container.ListBlobs().Select(item => GetQOption(container, item.Uri.AbsoluteUri)).OrderBy(o => o.sortKey).ToList();
@@ -61,7 +61,7 @@ namespace EventService.Data
             }
         }
 
-        private static QOption GetQOption(CloudBlobContainer container, string url)
+        private static AllowedValue GetQOption(CloudBlobContainer container, string url)
         {
             var blob = container.GetBlobReference(Path.GetFileName(url));
             blob.FetchAttributes();
@@ -70,7 +70,7 @@ namespace EventService.Data
             var name = blob.Metadata.ContainsKey("name") ? blob.Metadata["name"] : key;
             var sortKey = blob.Properties.LastModified?.ToString("s");
 
-            return new QOption
+            return new AllowedValue
             {
                 key = key,
                 value = name,

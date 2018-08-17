@@ -46,6 +46,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.3.0.0\lib\net452\Microsoft.Azure.KeyVault.Core.dll</HintPath>
     </Reference>
@@ -63,6 +69,8 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.6\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
@@ -108,27 +116,282 @@
     <Content Include="dist\rw-widgets.woff" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="Models\StormDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StormDB.edmx</DependentUpon>
+      <LastGenOutput>StormDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\StormDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StormDB.edmx</DependentUpon>
+      <LastGenOutput>StormDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CalendarsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\EventTemplatesController.cs" />
+    <Compile Include="Models\CustomField.cs" />
     <Compile Include="Data\EventsTable.cs" />
     <Compile Include="Data\ImagesBlob.cs" />
+    <Compile Include="Data\StormHacks.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountPref.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountRequest.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityLog.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Asset.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Atom.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CacheAssetAtom.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CacheAssetSearchItem.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CacheAssetWriteTime.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CacheFieldDefID.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CacheFieldFilterItem.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CacheFilterSetting.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CacheIndexItem.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CacheSearchItem.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CacheTimeBlockAtom.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CacheTimeBlockWriteTime.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Calendar.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CalendarTimeBlock.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DeedAccountEdit.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DeedCalendar.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DeedCalendarContent.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DeedTimeBlock.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Digest.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmailDrop.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmailJob.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmailJobQuick.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmailJobTimeBlock.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmailProblem.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmailReminder.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\EventTemplates.cs" />
-    <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\EventType.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventTypeFieldDef.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExternalAccount.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExternalStore.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExternalUniqueID.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Feedback.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FieldDef.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FieldDefOverride.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FieldType.cs" />
+    <Compile Include="Models\Gemischen.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Identity.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityIdentity.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityTimeBlock.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Invoice.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InvoiceItem.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LocalStoreInfo.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Member.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ordinal.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OutlookAppointment.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Partner.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Password.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Payment.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AllowedValue.cs" />
+    <Compile Include="Models\RecurrenceCatalog.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecurrencePattern.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Remittance.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SampleTemplates.cs" />
+    <Compile Include="Models\Sku.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SnapshotCustomer.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpudsServedByCustomer.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatCalendarReport.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatCalendarTimeBlock.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StateBag.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatTimeBlockCount.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StormDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StormDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StormDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StormDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StormDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeBlock.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeBlockEmail.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TransactionLog.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VAccessibleCalendar.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VCalendarTimeBlockWithTime.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vendor.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VIdentityPassword.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VLocalStoreInfoIdentity.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VMember.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VTimeBlockEmailsSendTime.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebName.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WriteTime.cs">
+      <DependentUpon>StormDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="connectionStrings.config" />
+    <EntityDeploy Include="Models\StormDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StormDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\StormDB.edmx.diagram">
+      <DependentUpon>StormDB.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\TrumbaAddEvent - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TrumbaEventService - Web Deploy.pubxml" />

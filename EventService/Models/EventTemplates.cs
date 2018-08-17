@@ -2,7 +2,7 @@
 
 namespace EventService.Models
 {
-    public class EventTemplates : Dictionary<string, Question[]>
+    public class EventTemplates : Dictionary<string, CustomField[]>
     {
     }
 }

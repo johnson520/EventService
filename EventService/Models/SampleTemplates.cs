@@ -1,16 +1,22 @@
 ﻿using System.Linq;
 using EventService.Data;
+using Newtonsoft.Json;
 
 namespace EventService.Models
 {
     public static class SampleTemplates
     {
-        private static readonly QOption[] DefaultEventImages =
+        public const string DefaultJson =
+            "{\"Presentation\":[{\"allowedValues\":[{\"key\":\"all-ages\",\"value\":\"All Ages\"},{\"key\":\"families\",\"value\":\"Families\"},{\"key\":\"children\",\"value\":\"Children\"},{\"key\":\"teens\",\"value\":\"Teens\"},{\"key\":\"adults\",\"value\":\"Adults\"},{\"key\":\"seniors\",\"value\":\"Seniors\"}],\"description\":\"The appropriate age range for the event\",\"displayName\":\"Age Range\",\"fieldType\":5,\"key\":\"age-range\"},{\"description\":\"The name of the presenter\",\"displayName\":\"Presenter\",\"fieldType\":0,\"key\":\"presenter\"},{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"}],\"Religious Event\":[{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The name of the presenter\",\"displayName\":\"Presenter\",\"fieldType\":0,\"key\":\"presenter\"},{\"allowedValues\":[{\"key\":\"all-ages\",\"value\":\"All Ages\"},{\"key\":\"families\",\"value\":\"Families\"},{\"key\":\"children\",\"value\":\"Children\"},{\"key\":\"teens\",\"value\":\"Teens\"},{\"key\":\"adults\",\"value\":\"Adults\"},{\"key\":\"seniors\",\"value\":\"Seniors\"}],\"description\":\"The appropriate age range for the event\",\"displayName\":\"Age Range\",\"fieldType\":5,\"key\":\"age-range\"}],\"Classical Music\":[{\"allowedValues\":[{\"key\":\"all-ages\",\"value\":\"All Ages\"},{\"key\":\"families\",\"value\":\"Families\"},{\"key\":\"children\",\"value\":\"Children\"},{\"key\":\"teens\",\"value\":\"Teens\"},{\"key\":\"adults\",\"value\":\"Adults\"},{\"key\":\"seniors\",\"value\":\"Seniors\"}],\"description\":\"The appropriate age range for the event\",\"displayName\":\"Age Range\",\"fieldType\":5,\"key\":\"age-range\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"},{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"}],\"Club Event\":[{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"},{\"allowedValues\":[{\"key\":\"all-ages\",\"value\":\"All Ages\"},{\"key\":\"families\",\"value\":\"Families\"},{\"key\":\"children\",\"value\":\"Children\"},{\"key\":\"teens\",\"value\":\"Teens\"},{\"key\":\"adults\",\"value\":\"Adults\"},{\"key\":\"seniors\",\"value\":\"Seniors\"}],\"description\":\"The appropriate age range for the event\",\"displayName\":\"Age Range\",\"fieldType\":5,\"key\":\"age-range\"}],\"Community\":[{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"},{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"}],\"Concert\":[{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"},{\"allowedValues\":[{\"key\":\"all-ages\",\"value\":\"All Ages\"},{\"key\":\"families\",\"value\":\"Families\"},{\"key\":\"children\",\"value\":\"Children\"},{\"key\":\"teens\",\"value\":\"Teens\"},{\"key\":\"adults\",\"value\":\"Adults\"},{\"key\":\"seniors\",\"value\":\"Seniors\"}],\"description\":\"The appropriate age range for the event\",\"displayName\":\"Age Range\",\"fieldType\":5,\"key\":\"age-range\"}],\"Dance\":[{\"allowedValues\":[{\"key\":\"all-ages\",\"value\":\"All Ages\"},{\"key\":\"families\",\"value\":\"Families\"},{\"key\":\"children\",\"value\":\"Children\"},{\"key\":\"teens\",\"value\":\"Teens\"},{\"key\":\"adults\",\"value\":\"Adults\"},{\"key\":\"seniors\",\"value\":\"Seniors\"}],\"description\":\"The appropriate age range for the event\",\"displayName\":\"Age Range\",\"fieldType\":5,\"key\":\"age-range\"},{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"}],\"Education\":[{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"description\":\"The name of the presenter\",\"displayName\":\"Presenter\",\"fieldType\":0,\"key\":\"presenter\"},{\"allowedValues\":[{\"key\":\"all-ages\",\"value\":\"All Ages\"},{\"key\":\"families\",\"value\":\"Families\"},{\"key\":\"children\",\"value\":\"Children\"},{\"key\":\"teens\",\"value\":\"Teens\"},{\"key\":\"adults\",\"value\":\"Adults\"},{\"key\":\"seniors\",\"value\":\"Seniors\"}],\"description\":\"The appropriate age range for the event\",\"displayName\":\"Age Range\",\"fieldType\":5,\"key\":\"age-range\"}],\"Fair/Festival\":[{\"allowedValues\":[{\"key\":\"all-ages\",\"value\":\"All Ages\"},{\"key\":\"families\",\"value\":\"Families\"},{\"key\":\"children\",\"value\":\"Children\"},{\"key\":\"teens\",\"value\":\"Teens\"},{\"key\":\"adults\",\"value\":\"Adults\"},{\"key\":\"seniors\",\"value\":\"Seniors\"}],\"description\":\"The appropriate age range for the event\",\"displayName\":\"Age Range\",\"fieldType\":5,\"key\":\"age-range\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"},{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"}],\"Hobbies\":[{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"},{\"allowedValues\":[{\"key\":\"all-ages\",\"value\":\"All Ages\"},{\"key\":\"families\",\"value\":\"Families\"},{\"key\":\"children\",\"value\":\"Children\"},{\"key\":\"teens\",\"value\":\"Teens\"},{\"key\":\"adults\",\"value\":\"Adults\"},{\"key\":\"seniors\",\"value\":\"Seniors\"}],\"description\":\"The appropriate age range for the event\",\"displayName\":\"Age Range\",\"fieldType\":5,\"key\":\"age-range\"}],\"Outdoors/Recreation\":[{\"allowedValues\":[{\"key\":\"all-ages\",\"value\":\"All Ages\"},{\"key\":\"families\",\"value\":\"Families\"},{\"key\":\"children\",\"value\":\"Children\"},{\"key\":\"teens\",\"value\":\"Teens\"},{\"key\":\"adults\",\"value\":\"Adults\"},{\"key\":\"seniors\",\"value\":\"Seniors\"}],\"description\":\"The appropriate age range for the event\",\"displayName\":\"Age Range\",\"fieldType\":5,\"key\":\"age-range\"},{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"allowedValues\":[{\"key\":\"coed\",\"value\":\"Coed\"},{\"key\":\"female\",\"value\":\"Female\"},{\"key\":\"male\",\"value\":\"Male\"}],\"displayName\":\"Gender\",\"fieldType\":5,\"key\":\"gender\"},{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"}],\"Sales/Shopping\":[{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"}],\"Seasonal\":[{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"}],\"Visual Arts\":[{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"},{\"allowedValues\":[{\"key\":\"all-ages\",\"value\":\"All Ages\"},{\"key\":\"families\",\"value\":\"Families\"},{\"key\":\"children\",\"value\":\"Children\"},{\"key\":\"teens\",\"value\":\"Teens\"},{\"key\":\"adults\",\"value\":\"Adults\"},{\"key\":\"seniors\",\"value\":\"Seniors\"}],\"description\":\"The appropriate age range for the event\",\"displayName\":\"Age Range\",\"fieldType\":5,\"key\":\"age-range\"}],\"Movies\":[{\"description\":\"The writer of the performance\",\"displayName\":\"Written By\",\"fieldType\":0,\"key\":\"written-by\"},{\"description\":\"The cast of the performance\",\"displayName\":\"Cast\",\"fieldType\":0,\"key\":\"cast\"},{\"allowedValues\":[{\"key\":\"g\",\"value\":\"G\"},{\"key\":\"pg\",\"value\":\"PG\"},{\"key\":\"pg-13\",\"value\":\"PG-13\"},{\"key\":\"r\",\"value\":\"R\"},{\"key\":\"nc-17\",\"value\":\"NC-17\"},{\"key\":\"not-rated\",\"value\":\"Not Rated\"}],\"displayName\":\"MPAA Rating\",\"fieldType\":5,\"key\":\"mpaa-rating\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The director of the performance\",\"displayName\":\"Directed By\",\"fieldType\":0,\"key\":\"directed-by\"},{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"}],\"Theatre\":[{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"},{\"description\":\"The director of the performance\",\"displayName\":\"Directed By\",\"fieldType\":0,\"key\":\"directed-by\"},{\"description\":\"The writer of the performance\",\"displayName\":\"Written By\",\"fieldType\":0,\"key\":\"written-by\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"},{\"description\":\"The cast of the performance\",\"displayName\":\"Cast\",\"fieldType\":0,\"key\":\"cast\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"allowedValues\":[{\"key\":\"all-ages\",\"value\":\"All Ages\"},{\"key\":\"families\",\"value\":\"Families\"},{\"key\":\"children\",\"value\":\"Children\"},{\"key\":\"teens\",\"value\":\"Teens\"},{\"key\":\"adults\",\"value\":\"Adults\"},{\"key\":\"seniors\",\"value\":\"Seniors\"}],\"description\":\"The appropriate age range for the event\",\"displayName\":\"Age Range\",\"fieldType\":5,\"key\":\"age-range\"},{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"}],\"Sports\":[{\"allowedValues\":[{\"key\":\"all-ages\",\"value\":\"All Ages\"},{\"key\":\"families\",\"value\":\"Families\"},{\"key\":\"children\",\"value\":\"Children\"},{\"key\":\"teens\",\"value\":\"Teens\"},{\"key\":\"adults\",\"value\":\"Adults\"},{\"key\":\"seniors\",\"value\":\"Seniors\"}],\"description\":\"The appropriate age range for the event\",\"displayName\":\"Age Range\",\"fieldType\":5,\"key\":\"age-range\"},{\"description\":\"The low price for an event\",\"displayName\":\"Price - Low\",\"fieldType\":4,\"key\":\"price-low\"},{\"description\":\"The phone number for ordering tickets\",\"displayName\":\"Ticket Phone\",\"fieldType\":12,\"key\":\"ticket-phone\"},{\"description\":\"The high price for an event\",\"displayName\":\"Price - High\",\"fieldType\":4,\"key\":\"price-high\"},{\"description\":\"The web link for ordering tickets\",\"displayName\":\"Ticket Web Link\",\"fieldType\":6,\"key\":\"ticket-web-link\"},{\"allowedValues\":[{\"key\":\"auto-racing\",\"value\":\"Auto Racing\"},{\"key\":\"baseball\",\"value\":\"Baseball\"},{\"key\":\"basketball\",\"value\":\"Basketball\"},{\"key\":\"billards\",\"value\":\"Billards\"},{\"key\":\"boat-racing\",\"value\":\"Boat Racing\"},{\"key\":\"boxing\",\"value\":\"Boxing\"},{\"key\":\"cycling\",\"value\":\"Cycling\"},{\"key\":\"equestrian\",\"value\":\"Equestrian\"},{\"key\":\"fencing\",\"value\":\"Fencing\"},{\"key\":\"football\",\"value\":\"Football\"},{\"key\":\"golf\",\"value\":\"Golf\"},{\"key\":\"gymnastics\",\"value\":\"Gymnastics\"},{\"key\":\"hockey\",\"value\":\"Hockey\"},{\"key\":\"ice-skating\",\"value\":\"Ice Skating\"},{\"key\":\"inline-skating\",\"value\":\"Inline Skating\"},{\"key\":\"lacrosse\",\"value\":\"Lacrosse\"},{\"key\":\"martial-arts\",\"value\":\"Martial Arts\"},{\"key\":\"polo\",\"value\":\"Polo\"},{\"key\":\"rowing\",\"value\":\"Rowing\"},{\"key\":\"running\",\"value\":\"Running\"},{\"key\":\"sailing\",\"value\":\"Sailing\"},{\"key\":\"skiing\",\"value\":\"Skiing\"},{\"key\":\"snowboarding\",\"value\":\"Snowboarding\"},{\"key\":\"soccer\",\"value\":\"Soccer\"},{\"key\":\"surfing\",\"value\":\"Surfing\"},{\"key\":\"swimming\",\"value\":\"Swimming\"},{\"key\":\"table-tennis\",\"value\":\"Table Tennis\"},{\"key\":\"tennis\",\"value\":\"Tennis\"},{\"key\":\"track-and-field\",\"value\":\"Track and Field\"},{\"key\":\"volleyball\",\"value\":\"Volleyball\"},{\"key\":\"water-polo\",\"value\":\"Water Polo\"},{\"key\":\"weightlifting\",\"value\":\"Weightlifting\"}],\"description\":\"The category of the event\",\"displayName\":\"Category\",\"fieldType\":5,\"key\":\"category\"},{\"description\":\"The home team in a sporting event\",\"displayName\":\"Home Team\",\"fieldType\":0,\"key\":\"home-team\"},{\"description\":\"The home team in a sporting event\",\"displayName\":\"Visiting Team\",\"fieldType\":0,\"key\":\"visiting-team\"},{\"description\":\"The score or outcome of a sporting event\",\"displayName\":\"Score\",\"fieldType\":0,\"key\":\"score\"},{\"description\":\"The contact person for this event\",\"displayName\":\"Contact\",\"fieldType\":0,\"key\":\"contact\"},{\"allowedValues\":[{\"key\":\"coed\",\"value\":\"Coed\"},{\"key\":\"female\",\"value\":\"Female\"},{\"key\":\"male\",\"value\":\"Male\"}],\"displayName\":\"Gender\",\"fieldType\":5,\"key\":\"gender\"}],\"Photo Events\":[{\"description\":\"Image to display with this event\",\"displayName\":\"Event image\",\"fieldType\":16,\"key\":\"event-image\"},{\"description\":\"Summary of the event\",\"displayName\":\"Summary\",\"fieldType\":1,\"key\":\"summary\"}],\"Ted\'s template\":[{\"description\":\"This is a very important field to fill out.\",\"displayName\":\"Ted\'s first custom field\",\"fieldType\":4,\"key\":\"ted-s-first-custom-field\",\"maxValue\":99.9900,\"minValue\":0.9900,\"required\":true},{\"allowedValues\":[{\"key\":\"cat\",\"value\":\"Cat\"},{\"key\":\"cow\",\"value\":\"Cow\"},{\"key\":\"dog\",\"value\":\"Dog\"},{\"key\":\"none\",\"value\":\"None\"},{\"key\":\"pig\",\"value\":\"Pig\"},{\"key\":\"puppy\",\"value\":\"Puppy\"}],\"_defaultValue\":\"61\",\"description\":\"Some things to choose from\",\"displayName\":\"Thing\",\"displayStyle\":\"DropDown\",\"fieldType\":17,\"key\":\"thing\",\"multipleValues\":true,\"required\":true},{\"description\":\"Image to display with this event\",\"displayName\":\"Event image\",\"fieldType\":16,\"key\":\"event-image\"}]}";
+
+        public static readonly CustomField[] EmptyTemplateQuestions = { };
+
+        private static readonly AllowedValue[] DefaultEventImages =
         {
-            new QOption("None"),
-            new QOption { url = "https://www.trumba.com/images/trumba_logo_sm.gif", key = "trumba-logo", value = "Trumba" },
-            new QOption { url = "http://wmgf.us/wp-content/uploads/2016/02/Washington_Huskies.png", key = "uw-huskies-logo", value = "Huskies" },
-            new QOption
+            new AllowedValue("None"),
+            new AllowedValue {url = "https://www.trumba.com/images/trumba_logo_sm.gif", key = "trumba-logo", value = "Trumba"},
+            new AllowedValue {url = "http://wmgf.us/wp-content/uploads/2016/02/Washington_Huskies.png", key = "uw-huskies-logo", value = "Huskies"},
+            new AllowedValue
             {
                 url = "https://static.nfl.com/static/content/public/static/wildcat/assets/img/logos/teams/SEA.svg",
                 key = "nfl-seahawks",
@@ -18,89 +24,81 @@ namespace EventService.Models
             }
         };
 
-        public static readonly Question[] EmptyTemplateQuestions = { };
-
-        private static readonly Question[] SampleExtra =
+        private static readonly CustomField[] SampleExtra =
         {
-            new Question
+            new CustomField
             {
-                defaultValue = null,
-                key = "eventFeaturedEvent",
+                _defaultValue = null,
+                //key = "eventFeaturedEvent",
                 displayName = "Featured event",
-                required = false,
-                order = 110,
-                fieldType = FieldType.checkbox
+                _required = false.ToString(),
+                _fieldType = (int) FieldType.Boolean
             },
-            new Question
+            new CustomField
             {
-                defaultValue = "",
-                key = "eventSubmitterPhone",
+                _defaultValue = "",
+                //key = "eventSubmitterPhone",
                 displayName = "Submitter phone",
-                required = false,
-                order = 111,
-                fieldType = FieldType.textbox,
-                type = "tel"
+                _required = false.ToString(),
+                _fieldType = (int) FieldType.PhoneUS
             },
-            new Question
+            new CustomField
             {
-                defaultValue = "",
-                key = "eventSubmitterEmail",
+                _defaultValue = "",
+                //key = "eventSubmitterEmail",
                 displayName = "Submitter email",
-                required = true,
-                order = 112,
-                fieldType = FieldType.textbox,
-                type = "email"
+                _required = true.ToString(),
+                _fieldType = (int) FieldType.Email
             },
-            new Question
+            new CustomField
             {
-                defaultValue = "",
-                key = "eventSubmitterName",
+                _defaultValue = "",
+                //key = "eventSubmitterName",
                 displayName = "Submitter name",
-                required = true,
-                order = 113,
-                fieldType = FieldType.textbox,
-                type = "text"
+                _required = true.ToString(),
+                _fieldType = (int) FieldType.SingleLine
             }
         };
 
-        public static Question[] SampleTemplateQuestions => DefaultTemplateQuestions.Concat(SampleExtra).ToArray();
-
-        public static Question[] DefaultTemplateQuestions =>
+        public static CustomField[] DefaultTemplateQuestions =>
             new[]
             {
-                new Question("Event Image")
+                new CustomField("Event Image")
                 {
-                    fieldType = FieldType.imagepicker,
-                    allowedValues = DefaultEventImages.Concat(ImagesBlob.GetCustomImages()).ToArray(),
-                    defaultValue = "none"
+                    _fieldType = (int) FieldType.CustomAsset,
+                    _assetDisplayNames = JsonConvert.SerializeObject(DefaultEventImages.Concat(ImagesBlob.GetCustomImages()).ToArray()),
+                    _defaultValue = "none"
                 },
-                new Question("Audience")
+                new CustomField("Audience")
                 {
-                    key = "eventAudience",
-                    required = true,
-                    fieldType = FieldType.multiselect,
-                    allowedValues = new[] { new QOption("Adults"), new QOption("Children"), new QOption("Seniors"), new QOption("Teens") },
-                    defaultValue = new string[0]
+                    //key = "eventAudience",
+                    _required = true.ToString(),
+                    _fieldType = (int) FieldType.Enumeration,
+                    _allowedValues = JsonConvert.SerializeObject(new[] {"Adults", "Children", "Seniors", "Teens"}),
+                    _defaultValue = "[]"
                 },
-                new Question("Event Type")
+                new CustomField("Event Type")
                 {
-                    fieldType = FieldType.multiselect,
-                    required = true,
-                    allowedValues = new[]
+                    _fieldType = (int) FieldType.Enumeration,
+                    _multiple = true.ToString(),
+                    _required = true.ToString(),
+                    _allowedValues = JsonConvert.SerializeObject(new[]
                     {
-                        new QOption("Class"),
-                        new QOption("Exhibit"),
-                        new QOption("Festival"),
-                        new QOption("Job Fair"),
-                        new QOption("Meeting"),
-                        new QOption("Performance"),
-                        new QOption("Seminar"),
-                        new QOption("Tour"),
-                        new QOption("Trade Show"),
-                        new QOption("Webinar")
-                    },
-                    defaultValue = new string[0]
+                        "Class",
+                        "Exhibit",
+                        "Festival",
+                        "Job Fair",
+                        "Meeting",
+                        "Performance",
+                        "Seminar",
+                        "Tour",
+                        "Trade Show",
+                        "Webinar"
+                    }),
+                    _defaultValue = "[]"
                 }
             };
+
+        public static CustomField[] SampleTemplateQuestions => DefaultTemplateQuestions.Concat(SampleExtra).ToArray();
     }
 }

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c4360068d3b7427b94d4fc98dae84e07" Name="Diagram1">
+        <EntityTypeShape EntityType="Storm11Model.AccountPref" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.AccountRequest" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Account" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.ActivityLog" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Asset" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Atom" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.CacheAssetAtom" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.CacheAssetSearchItem" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.CacheAssetWriteTime" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.CacheFieldDefID" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.CacheFieldFilterItem" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.CacheFilterSetting" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.CacheIndexItem" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.CacheSearchItem" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.CacheTimeBlockAtom" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.CacheTimeBlockWriteTime" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Calendar" Width="1.5" PointX="3" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.CalendarTimeBlock" Width="1.5" PointX="8.25" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Customer" Width="1.5" PointX="0.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.DeedAccountEdit" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.DeedCalendarContent" Width="1.5" PointX="2.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.DeedCalendar" Width="1.5" PointX="14.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.DeedTimeBlock" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Digest" Width="1.5" PointX="5.25" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.EmailDrop" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.EmailJobQuick" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.EmailJob" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.EmailJobTimeBlock" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.EmailProblem" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.EmailReminder" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.EventTypeFieldDef" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.EventType" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.ExternalAccount" Width="1.5" PointX="16.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.ExternalStore" Width="1.5" PointX="8.25" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.ExternalUniqueID" Width="1.5" PointX="13.5" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Feedback" Width="1.5" PointX="10.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.FieldDefOverride" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.FieldDef" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Gemischen" Width="1.5" PointX="5.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Identity" Width="1.5" PointX="0.75" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.IdentityIdentity" Width="1.5" PointX="3" PointY="40.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.IdentityTimeBlock" Width="1.5" PointX="8" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.InvoiceItem" Width="1.5" PointX="5.25" PointY="56.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Invoice" Width="1.5" PointX="3" PointY="57" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Member" Width="1.5" PointX="8.25" PointY="35.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Ordinal" Width="1.5" PointX="4.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.OutlookAppointment" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Partner" Width="1.5" PointX="5.25" PointY="49.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Password" Width="1.5" PointX="3" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Payment" Width="1.5" PointX="5.25" PointY="61" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.RecurrenceCatalog" Width="1.5" PointX="8" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.RecurrencePattern" Width="1.5" PointX="8" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Remittance" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Sku" Width="1.5" PointX="3" PointY="62.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.SnapshotCustomer" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.SpudsServedByCustomer" Width="1.5" PointX="18.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.StatCalendarReport" Width="1.5" PointX="18.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.StatCalendarTimeBlock" Width="1.5" PointX="18.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.StateBag" Width="1.5" PointX="2.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.StatTimeBlockCount" Width="1.5" PointX="12.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.TimeBlockEmail" Width="1.5" PointX="11" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.TimeBlock" Width="1.5" PointX="5.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.TransactionLog" Width="1.5" PointX="18.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.Vendor" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.WebName" Width="1.5" PointX="5.25" PointY="53.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.WriteTime" Width="1.5" PointX="20.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.LocalStoreInfo" Width="1.5" PointX="20.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.VAccessibleCalendar" Width="1.5" PointX="20.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.VCalendarTimeBlockWithTime" Width="1.5" PointX="20.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.VIdentityPassword" Width="1.5" PointX="20.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.VLocalStoreInfoIdentity" Width="1.5" PointX="14.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.VMember" Width="1.5" PointX="20.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Storm11Model.VTimeBlockEmailsSendTime" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Storm11Model.FK_Accounts_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_Accounts_Identities" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_Calendars_Identities" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_CalendarTimeBlocks_Calendars" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_Digests_Calendars" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_ExternalStores_Calendars" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_Gemischens_Calendars" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_Gemischens_Calendars1" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_Members_Calendars" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_Partners_Calendars" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_WebNames_Calendars" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_CalendarTimeBlocks_TimeBlocks" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_Invoices_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_EmailDrops_EmailJobs" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_EmailJobQuicks_EmailJobs" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_EmailJobTimeBlocks_EmailJobs" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_EmailReminders_EmailJobs" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_EventTypeFieldDefs_EventTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_EventTypeFieldDefs_FieldDefs" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_ExternalStores_Identities" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_ExternalUniqueIDs_ExternalStores" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_ExternalUniqueIDs_TimeBlocks" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_Gemischens_Identities" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_IdentityIdentities_Identities" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_IdentityIdentities_Identities1" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_IdentityTimeBlocks_Identities" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_Members_Identities" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_Passwords_Identities" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_TimeBlockEmails_Identities" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_IdentityTimeBlocks_TimeBlocks" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_InvoiceItems_Invoices" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_InvoiceItems_Skus" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_Payments_Invoices" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_RecurrenceCatalogs_TimeBlocks" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_RecurrenceCatalogs_TimeBlocks1" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_RecurrencePatterns_TimeBlocks" ManuallyRouted="false" />
+        <AssociationConnector Association="Storm11Model.FK_TimeBlockEmails_TimeBlocks" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using EventService.Models;
+using Newtonsoft.Json;
 
 namespace EventService.Controllers
 {
@@ -28,6 +29,8 @@ namespace EventService.Controllers
                         {"Default Template", SampleTemplates.DefaultTemplateQuestions},
                         {"Sample", SampleTemplates.SampleTemplateQuestions}
                     };
+                case "TedsCalendar":
+                    return JsonConvert.DeserializeObject<EventTemplates>(SampleTemplates.DefaultJson);
                 default:
                     return new EventTemplates
                     {
