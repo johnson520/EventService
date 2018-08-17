@@ -23,5 +23,12 @@ namespace EventService.Models
             sortKey = key = StormHacks.MakeKeyFromDisplayName(value);
             this.value = value;
         }
+
+        public AllowedValue(Asset asset)
+        {
+            key = $"asset{asset.AssetID}";
+            sortKey = asset.AssetID.ToString("D5");
+            value = asset.DisplayName;
+        }
     }
 }

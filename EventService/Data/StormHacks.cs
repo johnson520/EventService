@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
@@ -31,61 +31,22 @@ namespace EventService.Data
 
             using (var db = new Storm11Entities())
             {
-                var cfs = db.Database.SqlQuery<CustomField>($@"
-Select
+                var cfs = db.Database.SqlQuery<CustomFieldQueryResult>($@"
+select
 	ET.EventTypeID as eventTypeId
 	, ET.Facets.value('(/DisplayName/text())[1]', 'nvarchar(MAX)') as eventTypeName
 	, FD.FieldType as _fieldType
-	--, FD.OwnerCalendarID
-	, FD.Facets.value('(/CF[@id=-3]/text())[1]', 'nvarchar(MAX)') as displayName
-	, FD.Facets.value('(/Description/text())[1]', 'nvarchar(MAX)') as [description]
-	, FD.Facets.value('(/CF[@id=-2]/text())[1]', 'nvarchar(MAX)') as _defaultValue
-	, FD.Facets.value('(/CF[@id=-4]/text())[1]', 'int') as minChars
-	, FD.Facets.value('(/CF[@id=-5]/text())[1]', 'int') as maxChars
-	, FD.Facets.value('(/CF[@id=-6]/text())[1]', 'money') as minValue
-	, FD.Facets.value('(/CF[@id=-7]/text())[1]', 'money') as maxValue
-	, FD.Facets.value('(/CF[@id=-8]/text())[1]', 'varchar(5)') as [_required]
-	, FD.Facets.value('(/CF[@id=-9]/text())[1]', 'varchar(5)') as [_multiple]
-	, FD.Facets.value('(/CF[@id=-10]/text())[1]', 'nvarchar(max)') as displayStyle
-	, dbo.AssetDisplayNames(FD.Facets.value('(/CF[@id=-11]/text())[1]', 'int')) as _assetDisplayNames
-	, dbo.AllowedValues(CONVERT(nvarchar(max), FD.Facets.query('/CF[@id=-1]'))) as _allowedValues
-    --, FD.Facets as _facets
+    , FD.Facets as _fdFacets
 from EventTypes ET
 	inner join EventTypeFieldDefs ETFD on ETFD.EventTypeID = ET.EventTypeID
 	inner join FieldDefs FD on FD.FieldDefID = ETFD.FieldDefID
 where ET.EventTypeFlags = 0 AND ET.Unlive = 0 AND FD.Unlive = 0 AND FD.OwnerCalendarID IN ({string.Join(",", calIds)})
 order by ET.EventTypeID
-").ToList();
+").ToList().Select(qr => ParseFacets(qr, db)).ToList();
 
                 return cfs;
             }
         }
-
-/*
-        private class CustomFieldQueryResult
-        {
-            public string _assetAllowedValues { get; set; }
-            public int eventTypeId { get; set; }
-            public string eventTypeName { get; set; }
-            public string _facets { get; set; }
-            public short _fieldType { get; set; }
-        }
-
-
-        private static CustomField ParseFacets(string facets)
-        {
-            var 
-
-            var xFacets = XElement.Parse($"<r>{facets}</r>");
-
-            var cfs = xFacets.Elements("CF").ToList();
-
-            var allowedValues = cfs.Where(cf => (int) cf.Attribute("id") == -1).Select(cf => cf.Value).ToList();
-
-
-        }
-*/
-
 
         public static List<CalendarsOwned> GetOwnedCalendars(string email)
         {
@@ -105,9 +66,54 @@ WHERE IDS.EmailAddress = @email
             }
         }
 
-        public static string MakeKeyFromDisplayName(string s)
+        public static string MakeKeyFromDisplayName(string s, string prefix = "")
         {
-            return $"event{Regex.Replace(Regex.Replace(s, @"[^\w\s]+", string.Empty).Trim(), @"\s+(\S)", m => m.Groups[1].Value.ToUpperInvariant())}";
+            return $"{prefix}{Regex.Replace(Regex.Replace(s, @"[^\w\s]+", string.Empty).Trim(), @"\s+(\S)", m => m.Groups[1].Value.ToUpperInvariant())}";
+        }
+
+        private static CustomField ParseFacets(CustomFieldQueryResult qr, Storm11Entities db)
+        {
+            int? IntCFValue(IEnumerable<XElement> xElements, int id)
+            {
+                return int.TryParse(xElements.FirstOrDefault(cf => (int) cf.Attribute("id") == id)?.Value, out var i) ? i : (int?) null;
+            }
+
+            decimal? DecimalCFValue(IEnumerable<XElement> xElements, int id)
+            {
+                return decimal.TryParse(xElements.FirstOrDefault(cf => (int) cf.Attribute("id") == id)?.Value, out var d) ? d : (decimal?) null;
+            }
+
+            bool BoolCFValue(IEnumerable<XElement> xElements, int id)
+            {
+                return bool.TryParse(xElements.FirstOrDefault(cf => (int) cf.Attribute("id") == id)?.Value, out var b) && b;
+            }
+
+            var facets = XElement.Parse($"<r>{qr._fdFacets}</r>");
+            var cfs = facets.Elements("CF").ToList();
+            var allowedValues = cfs.Where(cf => (int) cf.Attribute("id") == -1).Select(cf => new AllowedValue(cf.Value)).ToList();
+
+            var assetDefId = IntCFValue(cfs, -11);
+            if (assetDefId.HasValue)
+                allowedValues.AddRange(db.Assets.Where(a => a.AssetDefID == assetDefId.Value).ToList().Select(a => new AllowedValue {key = a.AssetID.ToString(), value = a.DisplayName}));
+
+            var result = new CustomField
+            {
+                eventTypeName = qr.eventTypeName,
+                eventTypeId = qr.eventTypeId,
+                fieldType = (FieldType) qr._fieldType,
+                description = facets.Element("Description")?.Value,
+                displayName = cfs.FirstOrDefault(cf => (int) cf.Attribute("id") == -3)?.Value,
+                _defaultValue = cfs.FirstOrDefault(cf => (int) cf.Attribute("id") == -2)?.Value,
+                minChars = IntCFValue(cfs, -4),
+                maxChars = IntCFValue(cfs, -5),
+                minValue = DecimalCFValue(cfs, -6),
+                maxValue = DecimalCFValue(cfs, -7),
+                required = BoolCFValue(cfs, -8),
+                multipleValues = BoolCFValue(cfs, -9),
+                allowedValues = allowedValues.Count > 0 ? allowedValues : null
+            };
+
+            return result;
         }
 
         public class CalendarsOwned
@@ -118,6 +124,15 @@ WHERE IDS.EmailAddress = @email
             public string CalendarDisplayName { get; set; }
             public int CalendarID { get; set; }
             public bool ShowPredefined => bool.TryParse(_showPredefined, out var b) && b;
+        }
+
+        [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local")]
+        private class CustomFieldQueryResult
+        {
+            public string _fdFacets { get; set; }
+            public short _fieldType { get; set; }
+            public int eventTypeId { get; set; }
+            public string eventTypeName { get; set; }
         }
     }
 }

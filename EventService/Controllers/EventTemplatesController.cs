@@ -20,16 +20,16 @@ namespace EventService.Controllers
         [HttpGet]
         public EventTemplates GetForCalendar(string calendar)
         {
-            switch (calendar)
+            switch (calendar.ToLowerInvariant())
             {
-                case "ApollosCalendar":
+                case "apolloscalendar":
                     return new EventTemplates
                     {
                         {"Empty", SampleTemplates.EmptyTemplateQuestions},
                         {"Default Template", SampleTemplates.DefaultTemplateQuestions},
                         {"Sample", SampleTemplates.SampleTemplateQuestions}
                     };
-                case "TedsCalendar":
+                case "tedscalendar":
                     return JsonConvert.DeserializeObject<EventTemplates>(SampleTemplates.DefaultJson);
                 default:
                     return new EventTemplates

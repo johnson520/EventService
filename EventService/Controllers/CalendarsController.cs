@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using System.Xml.Linq;
 using EventService.Data;
 using EventService.Models;
+using Newtonsoft.Json;
 
 namespace EventService.Controllers
 {
@@ -27,37 +27,10 @@ namespace EventService.Controllers
         }
 
         [HttpGet]
-        [Route("api/xmltest")]
-        public List<string> XmlTest()
+        [Route("api/assets")]
+        public object GetSampleAssets()
         {
-            var contacts = XElement.Parse(  
-                @"<Contacts>  
-        <Contact>  
-            <Name>Patrick Hines</Name>  
-            <Phone Type=""home"">206-555-0144</Phone>  
-            <Phone type=""work"">425-555-0145</Phone>  
-            <Address>  
-            <Street1>123 Main St</Street1>  
-            <City>Mercer Island</City>  
-            <State>WA</State>  
-            <Postal>68042</Postal>  
-            </Address>  
-            <NetWorth>10</NetWorth>  
-        </Contact>  
-        <Contact>  
-            <Name>Gretchen Rivas</Name>  
-            <Phone Type=""mobile"">206-555-0163</Phone>  
-            <Address>  
-            <Street1>123 Main St</Street1>  
-            <City>Mercer Island</City>  
-            <State>WA</State>  
-            <Postal>68042</Postal>  
-            </Address>  
-            <NetWorth>11</NetWorth>  
-        </Contact>  
-    </Contacts>");
-
-            return contacts.Elements("Contact").Select(c => c.Element("Name")?.Value).ToList();
+            return JsonConvert.DeserializeObject(SampleTemplates.LibraryAssets);
         }
     }
 }

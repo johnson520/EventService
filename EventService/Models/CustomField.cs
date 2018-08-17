@@ -17,27 +17,10 @@ namespace EventService.Models
         }
 
         [JsonIgnore]
-        public string _allowedValues { get; set; }
-
-        [JsonIgnore]
-        public string _assetDisplayNames { get; set; }
-
-        [JsonIgnore]
         public string _defaultValue { get; set; }
 
-        [JsonIgnore]
-        public short _fieldType { get; set; }
-
-        [JsonIgnore]
-        public string _multiple { get; set; }
-
-        [JsonIgnore]
-        public string _required { get; set; }
-
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public List<AllowedValue> allowedValues => _allowedValues != null
-            ? JsonConvert.DeserializeObject<List<string>>(_allowedValues).Select(s => new AllowedValue(s)).ToList()
-            : (_assetDisplayNames != null ? JsonConvert.DeserializeObject<List<AllowedValue>>(_assetDisplayNames) : null);
+        public List<AllowedValue> allowedValues { get; set; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public object defaultValue
@@ -65,9 +48,9 @@ namespace EventService.Models
         [JsonIgnore]
         public string eventTypeName { get; set; }
 
-        public FieldType fieldType => (FieldType) _fieldType;
+        public FieldType fieldType { get; set; }
 
-        public string key => StormHacks.MakeKeyFromDisplayName(displayName);
+        public string key => StormHacks.MakeKeyFromDisplayName(displayName, "event");
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public int? maxChars { get; set; }
@@ -82,9 +65,9 @@ namespace EventService.Models
         public decimal? minValue { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool multipleValues => bool.TryParse(_multiple, out var b) && b;
+        public bool multipleValues { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool required => bool.TryParse(_required, out var b) && b;
+        public bool required { get; set; }
     }
 }
