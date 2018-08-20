@@ -116,12 +116,12 @@
     <Content Include="dist\rw-widgets.woff" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
-    <Content Include="Models\StormDB.Context.tt">
+    <Content Include="DBModel\StormDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StormDB.edmx</DependentUpon>
       <LastGenOutput>StormDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\StormDB.tt">
+    <Content Include="DBModel\StormDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StormDB.edmx</DependentUpon>
       <LastGenOutput>StormDB.cs</LastGenOutput>
@@ -135,6 +135,7 @@
     <Compile Include="Controllers\CalendarsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\EventTemplatesController.cs" />
+    <Compile Include="Models\AssetModel.cs" />
     <Compile Include="Models\CustomField.cs" />
     <Compile Include="Data\EventsTable.cs" />
     <Compile Include="Data\ImagesBlob.cs" />
@@ -142,254 +143,254 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Account.cs">
+    <Compile Include="DBModel\Account.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountPref.cs">
+    <Compile Include="DBModel\AccountPref.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountRequest.cs">
+    <Compile Include="DBModel\AccountRequest.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ActivityLog.cs">
+    <Compile Include="DBModel\ActivityLog.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Asset.cs">
+    <Compile Include="DBModel\Asset.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Atom.cs">
+    <Compile Include="DBModel\Atom.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CacheAssetAtom.cs">
+    <Compile Include="DBModel\CacheAssetAtom.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CacheAssetSearchItem.cs">
+    <Compile Include="DBModel\CacheAssetSearchItem.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CacheAssetWriteTime.cs">
+    <Compile Include="DBModel\CacheAssetWriteTime.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CacheFieldDefID.cs">
+    <Compile Include="DBModel\CacheFieldDefID.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CacheFieldFilterItem.cs">
+    <Compile Include="DBModel\CacheFieldFilterItem.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CacheFilterSetting.cs">
+    <Compile Include="DBModel\CacheFilterSetting.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CacheIndexItem.cs">
+    <Compile Include="DBModel\CacheIndexItem.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CacheSearchItem.cs">
+    <Compile Include="DBModel\CacheSearchItem.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CacheTimeBlockAtom.cs">
+    <Compile Include="DBModel\CacheTimeBlockAtom.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CacheTimeBlockWriteTime.cs">
+    <Compile Include="DBModel\CacheTimeBlockWriteTime.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Calendar.cs">
+    <Compile Include="DBModel\Calendar.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CalendarTimeBlock.cs">
+    <Compile Include="DBModel\CalendarTimeBlock.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Customer.cs">
+    <Compile Include="DBModel\Customer.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DeedAccountEdit.cs">
+    <Compile Include="DBModel\DeedAccountEdit.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DeedCalendar.cs">
+    <Compile Include="DBModel\DeedCalendar.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DeedCalendarContent.cs">
+    <Compile Include="DBModel\DeedCalendarContent.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DeedTimeBlock.cs">
+    <Compile Include="DBModel\DeedTimeBlock.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Digest.cs">
+    <Compile Include="DBModel\Digest.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EmailDrop.cs">
+    <Compile Include="DBModel\EmailDrop.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EmailJob.cs">
+    <Compile Include="DBModel\EmailJob.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EmailJobQuick.cs">
+    <Compile Include="DBModel\EmailJobQuick.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EmailJobTimeBlock.cs">
+    <Compile Include="DBModel\EmailJobTimeBlock.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EmailProblem.cs">
+    <Compile Include="DBModel\EmailProblem.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EmailReminder.cs">
+    <Compile Include="DBModel\EmailReminder.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\EventTemplates.cs" />
-    <Compile Include="Models\EventType.cs">
+    <Compile Include="DBModel\EventType.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EventTypeFieldDef.cs">
+    <Compile Include="DBModel\EventTypeFieldDef.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ExternalAccount.cs">
+    <Compile Include="DBModel\ExternalAccount.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ExternalStore.cs">
+    <Compile Include="DBModel\ExternalStore.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ExternalUniqueID.cs">
+    <Compile Include="DBModel\ExternalUniqueID.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Feedback.cs">
+    <Compile Include="DBModel\Feedback.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FieldDef.cs">
+    <Compile Include="DBModel\FieldDef.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FieldDefOverride.cs">
+    <Compile Include="DBModel\FieldDefOverride.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FieldType.cs" />
-    <Compile Include="Models\Gemischen.cs">
+    <Compile Include="DBModel\Gemischen.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Identity.cs">
+    <Compile Include="DBModel\Identity.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\IdentityIdentity.cs">
+    <Compile Include="DBModel\IdentityIdentity.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\IdentityTimeBlock.cs">
+    <Compile Include="DBModel\IdentityTimeBlock.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Invoice.cs">
+    <Compile Include="DBModel\Invoice.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\InvoiceItem.cs">
+    <Compile Include="DBModel\InvoiceItem.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LocalStoreInfo.cs">
+    <Compile Include="DBModel\LocalStoreInfo.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Member.cs">
+    <Compile Include="DBModel\Member.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Ordinal.cs">
+    <Compile Include="DBModel\Ordinal.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\OutlookAppointment.cs">
+    <Compile Include="DBModel\OutlookAppointment.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Partner.cs">
+    <Compile Include="DBModel\Partner.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Password.cs">
+    <Compile Include="DBModel\Password.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Payment.cs">
+    <Compile Include="DBModel\Payment.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AllowedValue.cs" />
-    <Compile Include="Models\RecurrenceCatalog.cs">
+    <Compile Include="DBModel\RecurrenceCatalog.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RecurrencePattern.cs">
+    <Compile Include="DBModel\RecurrencePattern.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Remittance.cs">
+    <Compile Include="DBModel\Remittance.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SampleTemplates.cs" />
-    <Compile Include="Models\Sku.cs">
+    <Compile Include="Controllers\SampleTemplates.cs" />
+    <Compile Include="DBModel\Sku.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SnapshotCustomer.cs">
+    <Compile Include="DBModel\SnapshotCustomer.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SpudsServedByCustomer.cs">
+    <Compile Include="DBModel\SpudsServedByCustomer.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StatCalendarReport.cs">
+    <Compile Include="DBModel\StatCalendarReport.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StatCalendarTimeBlock.cs">
+    <Compile Include="DBModel\StatCalendarTimeBlock.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StateBag.cs">
+    <Compile Include="DBModel\StateBag.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StatTimeBlockCount.cs">
+    <Compile Include="DBModel\StatTimeBlockCount.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StormDB.Context.cs">
+    <Compile Include="DBModel\StormDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StormDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StormDB.cs">
+    <Compile Include="DBModel\StormDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StormDB.Designer.cs">
+    <Compile Include="DBModel\StormDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StormDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\TimeBlock.cs">
+    <Compile Include="DBModel\TimeBlock.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TimeBlockEmail.cs">
+    <Compile Include="DBModel\TimeBlockEmail.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TransactionLog.cs">
+    <Compile Include="DBModel\TransactionLog.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VAccessibleCalendar.cs">
+    <Compile Include="DBModel\VAccessibleCalendar.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VCalendarTimeBlockWithTime.cs">
+    <Compile Include="DBModel\VCalendarTimeBlockWithTime.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Vendor.cs">
+    <Compile Include="DBModel\Vendor.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VIdentityPassword.cs">
+    <Compile Include="DBModel\VIdentityPassword.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VLocalStoreInfoIdentity.cs">
+    <Compile Include="DBModel\VLocalStoreInfoIdentity.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VMember.cs">
+    <Compile Include="DBModel\VMember.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VTimeBlockEmailsSendTime.cs">
+    <Compile Include="DBModel\VTimeBlockEmailsSendTime.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\WebName.cs">
+    <Compile Include="DBModel\WebName.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\WriteTime.cs">
+    <Compile Include="DBModel\WriteTime.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="connectionStrings.config" />
-    <EntityDeploy Include="Models\StormDB.edmx">
+    <EntityDeploy Include="DBModel\StormDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>StormDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\StormDB.edmx.diagram">
+    <Content Include="DBModel\StormDB.edmx.diagram">
       <DependentUpon>StormDB.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />

@@ -28,9 +28,9 @@ namespace EventService.Controllers
 
         [HttpGet]
         [Route("api/assets")]
-        public object GetSampleAssets()
+        public AssetsResponse GetSampleAssets()
         {
-            return JsonConvert.DeserializeObject(SampleTemplates.LibraryAssets);
+            return JsonConvert.DeserializeObject<AssetsResponse>(SampleTemplates.LibraryAssets);
         }
     }
 }

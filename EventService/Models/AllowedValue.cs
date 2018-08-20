@@ -1,4 +1,5 @@
 ﻿using EventService.Data;
+using EventService.DBModel;
 using Newtonsoft.Json;
 
 namespace EventService.Models

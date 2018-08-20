@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using EventService.DBModel;
 using EventService.Models;
 using Newtonsoft.Json;
 
