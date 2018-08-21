@@ -259,7 +259,7 @@
     <Compile Include="DBModel\FieldDefOverride.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FieldType.cs" />
+    <Compile Include="T2DataModels\FieldType.cs" />
     <Compile Include="DBModel\Gemischen.cs">
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
@@ -383,7 +383,7 @@
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\FieldDisplayStyle.cs" />
+    <Compile Include="T2DataModels\FieldDisplayStyle.cs" />
     <Compile Include="T2DataModels\IAsset.cs" />
     <Compile Include="T2DataModels\ICalendar.cs" />
     <Compile Include="T2DataModels\IEvent.cs" />
