@@ -383,6 +383,14 @@
       <DependentUpon>StormDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\FieldDisplayStyle.cs" />
+    <Compile Include="T2DataModels\IAsset.cs" />
+    <Compile Include="T2DataModels\ICalendar.cs" />
+    <Compile Include="T2DataModels\IEvent.cs" />
+    <Compile Include="T2DataModels\IField.cs" />
+    <Compile Include="T2DataModels\IFieldValue.cs" />
+    <Compile Include="T2DataModels\IModel.cs" />
+    <Compile Include="T2DataModels\ITemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="connectionStrings.config" />
