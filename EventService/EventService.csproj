@@ -101,6 +101,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CORS\corsTest.js" />
+    <Content Include="CORS\index.html" />
     <Content Include="dist\12f0820c451bdc75f4d1ef97732bf6e8.woff" />
     <Content Include="dist\33a752211d05af6684e26ec63c2ed965.gif" />
     <Content Include="dist\792dcd18baf5f544aabcad1883d673c2.svg" />
@@ -401,6 +403,7 @@
     <Content Include="DBModel\StormDB.edmx.diagram">
       <DependentUpon>StormDB.edmx</DependentUpon>
     </Content>
+    <Content Include="CORS\corsTest.js.map" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\TrumbaAddEvent - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TrumbaEventService - Web Deploy.pubxml" />
@@ -414,6 +417,9 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="CORS\corsTest.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
