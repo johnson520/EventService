@@ -101,6 +101,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ckeditor-config.js" />
     <Content Include="dist\12f0820c451bdc75f4d1ef97732bf6e8.woff" />
     <Content Include="dist\33a752211d05af6684e26ec63c2ed965.gif" />
     <Content Include="dist\792dcd18baf5f544aabcad1883d673c2.svg" />
