@@ -450,7 +450,8 @@
   </Target>
   <PropertyGroup>
     <PreBuildEvent>xcopy $(ProjectDir)..\..\ReactTrumba\dist\*.* $(ProjectDir)dist /y /s
-xcopy $(ProjectDir)..\..\ReactTrumba\index.html $(ProjectDir) /y</PreBuildEvent>
+xcopy $(ProjectDir)..\..\ReactTrumba\index.html $(ProjectDir) /y
+xcopy $(ProjectDir)..\..\ReactTrumba\ckeditor-config.js $(ProjectDir) /y</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
